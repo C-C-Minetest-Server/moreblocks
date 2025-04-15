@@ -148,6 +148,10 @@ stairsplus.register_single = function(category, alternate, info, modname, subnam
 	def.light_source = math.max(0, (def.light_source or 0) - 1)
 	def.groups = stairsplus:prepare_groups(fields.groups)
 
+	if category == "slab" or category == "slope" then
+		def.groups.not_blocking_trains = 1
+	end
+
 	if category == "slab" then
 		if minetest.global_exists("place_rotated") then
 			def.on_place = place_rotated.slab
